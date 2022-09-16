@@ -51,6 +51,20 @@ class MarabouNetworkONNX(MarabouNetwork.MarabouNetwork):
         self.outputNames = None
         self.graph = None
         
+    def shallowClear(self):
+        """Reset values to represent new copy
+        of network while maintaining
+        previous constraints. Used for
+        unrolling system dynamics.
+        """
+        self.madeGraphEquations = []
+        self.varMap = dict()
+        self.constantMap = dict()
+        self.shapeMap = dict()
+        self.inputNames = None
+        self.outputNames = None
+        self.graph = None
+        
     def readONNX(self, filename, inputNames, outputNames, reindexOutputVars=True):
         """Read an ONNX file and create a MarabouNetworkONNX object
 
